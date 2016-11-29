@@ -28,3 +28,37 @@ curl -XDELETE 'http://localhost:9200/_river/days'
 
 https://habrahabr.ru/sandbox/94763/
 http://stackoverflow.com/questions/23846971/how-to-use-elasticsearch-with-mongodb
+
+
+
+curl -XPUT "egritsina.domain.corp:9200/_river/topics/_meta" -d '{
+  "type": "mongodb",
+  "mongodb": {
+  "servers": [
+      { "host": "127.0.0.1", "port": 27017 }
+    ],
+    "db": "Rutracker",
+    "collection": "topics",
+	"options": { "secondary_read_preference": true }
+  },
+  "index": {
+    "name": "rutracker_1",
+    "type": "topics"
+  }
+}'
+
+curl -XDELETE "egritsina.domain.corp:9200/_river/topics"
+
+curl -XGET "egritsina.domain.corp:9200/_river/topics/_meta"
+curl egritsina.domain.corp:9200/rutracker_1/topics/_search
+
+curl -XGET "http://egritsina.domain.corp:9200/rutracker_1/topics/_mapping"
+
+
+
+
+{"topics":{"properties":{"forum_id":{"type":"long"},"forum_name":{"type":"string", "index": "not_analyzed"},"live":{"type":"boolean"},"seeders":{"type":"long"},"size":{"type":"long"},"topic_title":{"type":"string", "index": "not_analyzed"}}}}
+
+
+curl -XPOST "http://egritsina.domain.corp:9200/rutracker_1/topics/_mapping?ignore_conflicts=true" -d '{"topics":{"dynamic": false,"properties":{"forum_id":{"type":"long"},"forum_name":{"type":"string", "index": "not_analyzed"},"live":{"type":"boolean"},"seeders":{"type":"long"},"size":{"type":"long"},"topic_title":{"type":"string", "index": "not_analyzed"}}}}'
+
