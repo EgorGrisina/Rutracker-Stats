@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jetbrains.kotlin:kotlin-nosql-mongodb:0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-nosql-mongodb/0.1-SNAPSHOT/8a5562c77c47ae704c00a89a66e6f1cce36cfd45/kotlin-nosql-mongodb-0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-nosql-mongodb/0.1-SNAPSHOT/d2fadc192cfde7832cb346d6bca28c60522c98ba/kotlin-nosql-mongodb-0.1-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

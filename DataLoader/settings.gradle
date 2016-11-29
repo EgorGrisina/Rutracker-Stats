@@ -1,4 +1,0 @@
-rootProject.name = 'dataloader'
-include 'Loader'
-rootProject.name = 'DataLoader'
-
