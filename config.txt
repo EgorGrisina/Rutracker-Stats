@@ -1,17 +1,30 @@
-config = { "_id" : "rs0", "members" : [ { "_id" : 0, "host" : "127.0.0.1:27017" } ] }
+config = { "_id" : "rs0", "members" : [ { "_id" : 0, "host" : "egritsina.domain.corp:27017" } ] }
+
+rs.initiate(config)
 
 
-curl -XPUT "localhost:9200/_river/days2/_meta" -d '{
+curl -XPUT "localhost:9200/_river/days/_meta" -d '{
   "type": "mongodb",
   "mongodb": {
+  "servers": [
+      { "host": "127.0.0.1", "port": 27017 }
+    ],
     "db": "test",
-    "collection": "days"
+    "collection": "days",
+	"options": { "secondary_read_preference": true }
   },
   "index": {
-    "name": "myapp_2",
+    "name": "myapp",
     "type": "days"
   }
 }'
 
 
 curl -XGET "localhost:9200/_river/days/_meta"
+
+
+curl -XDELETE 'http://localhost:9200/_river/days'
+
+
+https://habrahabr.ru/sandbox/94763/
+http://stackoverflow.com/questions/23846971/how-to-use-elasticsearch-with-mongodb
