@@ -1,5 +1,6 @@
 #Rutracker project
 data/
+data/*
 
 # Built application files
 *.apk
