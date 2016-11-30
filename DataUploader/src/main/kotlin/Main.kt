@@ -22,7 +22,7 @@ fun main(args: Array<String>) {
     val database = client.getDatabase(DB_NAME) //normal java driver usage
     val collection = database.getCollection<DTOTopic>(COLLECTION_TOPICS) //KMongo extension method
 
-    val topics = ArrayList<DTOTopic>()
+    /*val topics = ArrayList<DTOTopic>()
     val random = Random()
 
     for (i in 0..200) {
@@ -34,7 +34,7 @@ fun main(args: Array<String>) {
 
 
     collection.insertMany(topics)
-
+*/
 
 
     println("Result: ")
