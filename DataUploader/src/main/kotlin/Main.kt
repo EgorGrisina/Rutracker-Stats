@@ -22,19 +22,23 @@ fun main(args: Array<String>) {
     val database = client.getDatabase(DB_NAME) //normal java driver usage
     val collection = database.getCollection<DTOTopic>(COLLECTION_TOPICS) //KMongo extension method
 
-    /*val topics = ArrayList<DTOTopic>()
+    val topics = ArrayList<DTOTopic>()
     val random = Random()
 
-    for (i in 0..200) {
+    for (i in 0..1000) {
         val forum_id = random.nextInt(10)
-        val seeds = random.nextInt(100)
-        val topic = DTOTopic("Фильм $i", "Форум $forum_id", forum_id, size = random.nextInt(10000000).toLong(), seeders = seeds,  live = seeds>20 )
-        topics.add(topic)
+        val size = random.nextInt(10000000).toLong()
+        for (j in 1..20) {
+            val seeds = random.nextInt(100)
+            val date = Calendar.getInstance()
+            date.set(Calendar.DAY_OF_MONTH, j)
+            val topic = DTOTopic(i, "Фильм $i", "Форум $forum_id", forum_id, size , seeders = seeds, live = seeds > 20, date = date.time)
+            topics.add(topic)
+        }
     }
 
 
     collection.insertMany(topics)
-*/
 
 
     println("Result: ")
