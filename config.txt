@@ -52,6 +52,9 @@ curl -XDELETE "egritsina.domain.corp:9200/_river/topics"
 curl -XGET "egritsina.domain.corp:9200/_river/topics/_meta"
 curl egritsina.domain.corp:9200/rutracker_1/topics/_search
 
+
+
+
 curl -XGET "http://egritsina.domain.corp:9200/rutracker_1/topics/_mapping"
 
 
