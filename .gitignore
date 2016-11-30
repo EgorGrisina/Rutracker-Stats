@@ -49,6 +49,8 @@ captures/
 *.iml
 /.idea/workspace.xml
 /.idea/libraries
+DataUploader/.idea/workspace.xml
+DataUploader/.idea/libraries
 
 # Keystore files
 *.jks
