@@ -1,3 +1,4 @@
+import dto.DTOTopic
 import org.litote.kmongo.*
 import org.litote.kmongo.util.KMongoUtil.toBson
 import java.util.*
@@ -21,8 +22,10 @@ fun main(args: Array<String>) {
     val client = KMongo.createClient(HOST, PORT)
     val database = client.getDatabase(DB_NAME) //normal java driver usage
     val collection = database.getCollection<DTOTopic>(COLLECTION_TOPICS) //KMongo extension method
+    val loader = RutrackerLoader()
+    loader.start()
 
-    val topics = ArrayList<DTOTopic>()
+    /*val topics = ArrayList<dto.DTOTopic>()
     val random = Random()
 
     for (i in 0..1000) {
@@ -32,20 +35,20 @@ fun main(args: Array<String>) {
             val seeds = random.nextInt(100)
             val date = Calendar.getInstance()
             date.set(Calendar.DAY_OF_MONTH, j)
-            val topic = DTOTopic(i, "Фильм $i", "Форум $forum_id", forum_id, size , seeders = seeds, live = seeds > 20, date = date.time)
+            val topic = dto.DTOTopic(i, "Фильм $i", "Форум $forum_id", forum_id, size , seeders = seeds, live = seeds > 20, date = date.time)
             topics.add(topic)
         }
     }
 
 
-    collection.insertMany(topics)
+    collection.insertMany(topics)*/
 
 
-    println("Result: ")
+    /*println("Result: ")
     val result = collection.find()
     for (topic in result) {
         println(topic)
-    }
+    }*/
 
 
     /*val newday = result.toList().get(0)

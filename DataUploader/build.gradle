@@ -2,11 +2,16 @@ group 'EgorGritsina'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.0.5'
+    ext {
+        kotlin_version = '1.0.5'
+        okhttp3Version = '3.3.1'
+        retrofit2Version = '2.1.0'
+    }
 
     repositories {
         mavenCentral()
     }
+
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
@@ -23,6 +28,13 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    compile "com.squareup.okhttp3:okhttp:$okhttp3Version"
+    compile "com.squareup.okhttp3:logging-interceptor:$okhttp3Version"
+
+    compile "com.squareup.retrofit2:retrofit:$retrofit2Version"
+    compile "com.squareup.retrofit2:converter-gson:$retrofit2Version"
+
     compile 'org.litote.kmongo:kmongo:3.3.5'
 
     testCompile group: 'junit', name: 'junit', version: '4.11'
