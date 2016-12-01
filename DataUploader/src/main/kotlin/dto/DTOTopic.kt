@@ -6,13 +6,13 @@ package dto
 import java.util.Date
 
 data class DTOTopic(
-        val topic_id: Long?,
-        val topic_title : String?,
-        val forum_name : String?,
-        val forum_id : Int?,
-        val size : Long?,
-        val seeders : Int?,
-        val live : Boolean?,
-        val date : Date?,
-        val reg_time : Long?
+        var topic_id: Long?,
+        var topic_title : String?,
+        var forum_name : String?,
+        var forum_id : Int?,
+        var size : Long?,
+        var seeders : Int?,
+        var live : Boolean?,
+        var date : Date?,
+        var reg_time : Long?
 )

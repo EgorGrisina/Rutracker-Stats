@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
     val database = client.getDatabase(DB_NAME) //normal java driver usage
     val collection = database.getCollection<DTOTopic>(COLLECTION_TOPICS) //KMongo extension method
     val loader = RutrackerLoader()
-    loader.start()
+    loader.start(collection)
 
     /*val topics = ArrayList<dto.DTOTopic>()
     val random = Random()

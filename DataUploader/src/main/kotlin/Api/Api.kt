@@ -10,7 +10,7 @@ object Api {
     lateinit var scheme: ApiScheme
 
     init {
-        val interceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+        val interceptor = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
         val client = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .connectTimeout(10, TimeUnit.SECONDS)
