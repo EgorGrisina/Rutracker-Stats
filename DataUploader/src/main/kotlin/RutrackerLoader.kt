@@ -24,6 +24,8 @@ class RutrackerLoader {
 
     var current_forum_number = -1
 
+    var connection_times = 1;
+
     lateinit var DBCollection : MongoCollection<DTOTopic>
 
     fun start(collection : MongoCollection<DTOTopic>) {
@@ -213,12 +215,17 @@ class RutrackerLoader {
             } else {
                 println("ON FAIL : " + t)
             }
-            println("wait 2 minutes")
-            Thread.sleep(TimeUnit.MINUTES.toMillis(2))
-            enqueue(call, apiCallback)
+            if (connection_times < 6) {
+                val minutes = Math.pow(2.0, connection_times.toDouble())
+                println("wait $minutes minutes")
+                connection_times++
+                Thread.sleep(TimeUnit.MINUTES.toMillis(minutes.toLong()))
+                enqueue(call, apiCallback)
+            }
         }
 
         override fun onResponse(call: Call<DTOResponse<JsonResultModel>>?, response: Response<DTOResponse<JsonResultModel>>?) {
+            connection_times = 1;
             response?.let {
                 val _body : DTOResponse<JsonResultModel>? = response.body()
                 _body?.let {
