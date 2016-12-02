@@ -89,7 +89,10 @@ class RutrackerLoader {
 
     private fun parseTopicsList(topicsList : MutableList<Long>, parent_id : Int, forum_id : Int) {
         println("forum : "+ forum_id + " parrent : " + parent_id+ " topics: " + topicsList)
-        if (topicsList.size > 0 || parent_id == 1958) {
+        if (parent_id == 1958){
+            doParsing()
+        }
+        if (topicsList.size > 0) {
             val topicsToParse = topicsList.subList(0, if (limit <= topicsList.size) limit - 1 else topicsList.size)
             val newTopicsList = topicsList.subList(if (limit <= topicsList.size) limit - 1 else topicsList.size, topicsList.size)
             if (topicsToParse.size > 0) {
