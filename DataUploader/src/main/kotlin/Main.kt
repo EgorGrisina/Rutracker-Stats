@@ -2,11 +2,12 @@ import dto.DTOTopic
 import org.litote.kmongo.*
 import org.litote.kmongo.util.KMongoUtil.toBson
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 val HOST = "egritsina.domain.corp"
 val PORT = 27017
 val DB_NAME = "Rutracker"
-val COLLECTION_TOPICS = "topics"
+val COLLECTION_TOPICS = "thursday"
 
 //data class Day(val _id: String?, val name: String, val weekend: Boolean, var users : Long)
 
@@ -19,6 +20,7 @@ fun main(args: Array<String>) {
         var result = Days.find{name.equal("Monday")}.projection { users }.update(1500)
         println(result)
     }*/
+    //Thread.sleep(TimeUnit.MINUTES.toMillis(100))
     val client = KMongo.createClient(HOST, PORT)
     val database = client.getDatabase(DB_NAME) //normal java driver usage
     val collection = database.getCollection<DTOTopic>(COLLECTION_TOPICS) //KMongo extension method

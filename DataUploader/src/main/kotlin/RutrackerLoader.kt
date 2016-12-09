@@ -71,7 +71,9 @@ class RutrackerLoader {
                         topic.forum_name = forumTree.f.get(parent_id)
                         topic.size = topic.size!! / (1024 * 1024)
                         topic.live = !(topic.seeders!! < 2 && (System.currentTimeMillis() - topic.reg_time!!) > TimeUnit.DAYS.toMillis(5))
-                        topic.date = Date()
+
+                        val date = Date(System.currentTimeMillis() - TimeUnit.DAYS.toMillis(1))
+                        topic.date = date
 
                         parsedTopics.add(topic)
                     } catch (e : Exception) {
@@ -91,6 +93,7 @@ class RutrackerLoader {
         println("forum : "+ forum_id + " parrent : " + parent_id+ " topics: " + topicsList)
         if (parent_id == 1958){
             doParsing()
+            return
         }
         if (topicsList.size > 0) {
             val topicsToParse = topicsList.subList(0, if (limit <= topicsList.size) limit - 1 else topicsList.size)
